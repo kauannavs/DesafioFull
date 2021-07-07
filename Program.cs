@@ -59,7 +59,7 @@ namespace DesafioRPA
                             for (int i = inicio; i <= 999; i++)
                             {
                                 var sufixo = i.ToString().PadLeft(3, '0');
-                                var cep = faixa + sufixo;
+                                var cep = faixa.ToString().PadLeft(5, '0') + sufixo;
 
                                 //Pega os elementos necessarios para a pesquisa
                                 if (driver.PageSource.Contains("503 Service Unavailable"))
