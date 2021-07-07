@@ -10,3 +10,11 @@
  06/07/2021 22:40:52 - ExtractData - Stop
  06/07/2021 22:40:52 - Inicia processo de busca
  06/07/2021 22:40:52 - Inicia busca pela faixa de CEP 1000001 - 5999999
+ 07/07/2021 08:12:03 - ExtractData - Start
+ 07/07/2021 08:12:05 - ExtractData - Stop
+ 07/07/2021 08:12:05 - Inicia processo de busca
+ 07/07/2021 08:12:05 - Inicia busca pela faixa de CEP 1000001 - 5999999
+ 07/07/2021 10:05:20 - ----------------------------------
+ 07/07/2021 10:05:20 - Error - OpenQA.Selenium.WebDriverException - 
+ 07/07/2021 10:05:20 - Error - The HTTP request to the remote WebDriver server for URL http://localhost:53270/session/349ca36d89f0d7d3de4b51e6afa32510/url timed out after 60 seconds. - 
+ 07/07/2021 10:05:20 - ----------------------------------
