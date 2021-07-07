@@ -55,7 +55,7 @@ namespace DesafioRPA.Helper
                 Log(fileNameLog, $"ExtractData - Stop");
                 return RemoveDuplicateCep(listExtractedData);
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 Log(fileNameLog, $"----------------------------------");
                 Log(fileNameLog, $"Error - {ex.GetType().FullName} - ");
@@ -87,7 +87,7 @@ namespace DesafioRPA.Helper
                 }
                 return listCepRange;
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 WriteExceptionLog(ex.GetType().FullName, ex.Message);
             }
@@ -114,8 +114,9 @@ namespace DesafioRPA.Helper
                         ExcelPkg.Save();
                     }
                 }
+
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 WriteExceptionLog(ex.GetType().FullName, ex.Message);
             }
@@ -139,7 +140,7 @@ namespace DesafioRPA.Helper
                     ExcelPkg.Save();
                 }
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 WriteExceptionLog(ex.GetType().FullName, ex.Message);
             }

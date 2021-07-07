@@ -1,0 +1,12 @@
+ 06/07/2021 22:12:41 - ExtractData - Start
+ 06/07/2021 22:12:42 - ExtractData - Stop
+ 06/07/2021 22:12:42 - Inicia processo de busca
+ 06/07/2021 22:12:42 - Inicia busca pela faixa de CEP 1000001 - 5999999
+ 06/07/2021 22:29:24 - ExtractData - Start
+ 06/07/2021 22:29:25 - ExtractData - Stop
+ 06/07/2021 22:29:25 - Inicia processo de busca
+ 06/07/2021 22:29:25 - Inicia busca pela faixa de CEP 1000001 - 5999999
+ 06/07/2021 22:40:51 - ExtractData - Start
+ 06/07/2021 22:40:52 - ExtractData - Stop
+ 06/07/2021 22:40:52 - Inicia processo de busca
+ 06/07/2021 22:40:52 - Inicia busca pela faixa de CEP 1000001 - 5999999

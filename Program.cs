@@ -11,11 +11,10 @@ namespace DesafioRPA
     {
         static void Main(string[] args)
         {
-            if (File.Exists(HelperData.fileNameLog))
+            /*if (File.Exists(HelperData.fileNameLog))
                 File.Delete(HelperData.fileNameLog);
             if (File.Exists(HelperData.fileNameCepRequest))
-                File.Delete(HelperData.fileNameCepRequest);
-            
+                File.Delete(HelperData.fileNameCepRequest);*/
             HelperData.CreateResultFile();
             SearchCep(HelperData.ExtractData());
         }
@@ -44,7 +43,14 @@ namespace DesafioRPA
                     using (var driver = new ChromeDriver(opt))
                     {
                         //Homepage do correios 
-                        driver.Navigate().GoToUrl("https://buscacepinter.correios.com.br/app/endereco/index.php");
+                        try
+                        {
+                            driver.Navigate().GoToUrl("https://buscacepinter.correios.com.br/app/endereco/index.php");
+                        }
+                        catch (Exception ex)
+                        {
+                            HelperData.WriteExceptionLog(ex.GetType().FullName, ex.Message);
+                        }
 
                         var faixaInicial = Convert.ToInt32(rangeCepInicial);
                         var faixaFinal = Convert.ToInt32(rangeCepFinal);
@@ -56,11 +62,12 @@ namespace DesafioRPA
                                 var cep = faixa + sufixo;
 
                                 //Pega os elementos necessarios para a pesquisa
-                                if (driver.PageSource.Contains("503 Service Unavailable")) 
+                                if (driver.PageSource.Contains("503 Service Unavailable"))
                                 {
                                     var tentativaDeReconexao = 3;
                                     var count = 0;
-                                    while ((count != tentativaDeReconexao) && driver.PageSource.Contains("503 Service Unavailable")) {
+                                    while ((count != tentativaDeReconexao) && driver.PageSource.Contains("503 Service Unavailable"))
+                                    {
                                         driver.Navigate().GoToUrl("https://buscacepinter.correios.com.br/app/endereco/index.php");
                                         count++;
                                     }
@@ -97,14 +104,23 @@ namespace DesafioRPA
                                     }
                                 }
                                 #endregion
-                            
-                                HelperData.Log(HelperData.fileNameCepRequest, $"{cep}{(isSaved?"- Encontrado":"")}");
+
+                                HelperData.Log(HelperData.fileNameCepRequest, $"{cep}{(isSaved ? "- Encontrado" : "")}");
 
                                 var backButton = driver.FindElementByXPath("//div[@id='retornar']//div//div//div//button[@id='btn_voltar']");
                                 if (backButton.Selected)
                                     backButton.Click();
                                 else
-                                    driver.Navigate().GoToUrl("https://buscacepinter.correios.com.br/app/endereco/index.php");
+                                {
+                                    try
+                                    {
+                                        driver.Navigate().GoToUrl("https://buscacepinter.correios.com.br/app/endereco/index.php");
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        HelperData.WriteExceptionLog(ex.GetType().FullName, ex.Message);
+                                    }
+                                }
 
                             }
                         }
@@ -113,7 +129,7 @@ namespace DesafioRPA
                 });
                 HelperData.Log(HelperData.fileNameLog, $"Finaliza processo de busca");
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 HelperData.WriteExceptionLog(ex.GetType().FullName, ex.Message);
             }
